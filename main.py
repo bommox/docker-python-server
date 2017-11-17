@@ -4,12 +4,12 @@ import SocketServer
 class S(BaseHTTPRequestHandler):
     def _set_headers(self):
             self.send_response(200)
-            self.send_header('Content-type', 'text/html')
+            self.send_header('Content-type', 'application/json')
             self.end_headers()
 
     def do_GET(self):
             self._set_headers()
-            self.wfile.write("<html><body><h1>hi!</h1></body></html>")
+            self.wfile.write("{\"message\":\"Hola!\"}")
 
 def run(server_class=HTTPServer, handler_class=S, port=80):
     server_address = ('', port)
